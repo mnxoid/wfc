@@ -32,7 +32,7 @@ def all_rots(img):
   ]
 
 def all_hashes(img):
-  return [ hash(str(x)) for x in allRots(img) ]
+  return [ hash(str(x)) for x in all_rots(img) ]
 
 def visualizer(tiles, hashes):
   def visualize(arr, manual=False):
@@ -41,3 +41,13 @@ def visualizer(tiles, hashes):
     show_image(np.hstack([np.vstack([tiles[hashes[int(arr[y,x])]] for y in range(y_sz)]) for x in range(x_sz)]),manual=manual)
   
   return visualize
+
+def show_tiles(hashes, tiles):
+    s = int(np.ceil(np.sqrt(len(hashes))))
+    w = min(s*2,18)
+    plt.figure(figsize=(w,w))
+    for i in range(len(hashes)):
+        plt.subplot(s,s,i+1)
+        plt.tick_params(labelleft=False, labeltop=False, labelright=False, labelbottom=False)
+        plt.gca().set_title("Tile %d" % i)
+        show_image(tiles[hashes[i]], manual=True)
