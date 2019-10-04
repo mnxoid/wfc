@@ -53,9 +53,9 @@ def show_tiles(hashes, tiles):
         show_image(tiles[hashes[i]], manual=True)
 
 def mean_surface(sfcs):
-  arrs = [np.array(pygame.surfarray.array3d(s), np.float) for s in sfcs]
-  avg_s = np.array(np.mean( np.array(arrs), axis=0 ), np.uint8)
-  return pygame.surfarray.make_surface(avg_s)
+  arrs = [_np.array(_pygame.surfarray.array3d(s), _np.float) for s in sfcs]
+  avg_s = _np.array(_np.mean(_np.array(arrs), axis=0), _np.uint8)
+  return _pygame.surfarray.make_surface(avg_s)
 
 __all__ = [
   "load_image",
